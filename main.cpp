@@ -20,6 +20,21 @@ int main(int argc, char* argv[])
       imagePixels = image.toPixelMatrix();
       cout<<filename<<" is "<<imagePixels.size()<<" high and "
         <<imagePixels[0].size()<<" pixels wide"<<endl;
+    
+      
+      for(int row = 0; row < imagePixels.size(); row++)
+      {
+        for(int col= 0; col < imagePixels[row].size(); col++)
+        {
+          Pixel color;
+          color = imagePixels[row][col];
+          color.green = 0;
+          color.blue = 0;
+          imagePixels[row][col] = color;
+        }
+      }
+      image.fromPixelMatrix( imagePixels );
+      image.save("redness.bmp");
     }
     else
     {
